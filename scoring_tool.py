@@ -90,7 +90,6 @@ def load_csv(path, **kwargs):
 # === Load Data ===
 df_transit = load_csv("data/community_transportation_options/georgia_transit_locations_with_hub.csv")
 rural_gdf = load_gdf("data/shapefiles/usda_rural_tracts.geojson").to_crs("EPSG:4326")
-rural_union = rural_gdf.unary_union
 csv_desirable = load_csv("data/desirable_undesirable_activities/desirable_activities_google_places_v3.csv")
 csv_usda = load_csv("data/desirable_undesirable_activities/food_access_research_atlas.csv", dtype={'CensusTract': str})
 tract_shape = load_gdf("data/shapefiles/tl_2024_13_tract/tl_2024_13_tract.shp")
@@ -145,7 +144,7 @@ with st.sidebar:
                 "transit_df": df_transit,
 
                 # --- DesirableUndesirableActivities ---
-                "rural_gdf_unary_union": rural_union,
+                "rural_gdf_unary_union": rural_gdf,
                 "desirable_csv": csv_desirable, 
                 "grocery_csv": csv_desirable,
                 "usda_csv": csv_usda,
