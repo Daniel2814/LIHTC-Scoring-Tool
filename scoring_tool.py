@@ -86,9 +86,10 @@ def load_gdf(path):
 def load_csv(path, **kwargs):
     return pd.read_csv(path, **kwargs)
 
+
 # === Load Data ===
 df_transit = load_csv("data/community_transportation_options/georgia_transit_locations_with_hub.csv")
-rural_gdf = load_gdf("data/shapefiles/USDA_Rural_Housing_by_Tract_7054655361891465054/USDA_Rural_Housing_by_Tract.shp").to_crs("EPSG:4326")
+rural_gdf = load_gdf("data/shapefiles/usda_rural_tracts.geojson").to_crs("EPSG:4326")
 rural_union = rural_gdf.unary_union
 csv_desirable = load_csv("data/desirable_undesirable_activities/desirable_activities_google_places_v3.csv")
 csv_usda = load_csv("data/desirable_undesirable_activities/food_access_research_atlas.csv", dtype={'CensusTract': str})
