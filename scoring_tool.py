@@ -56,7 +56,7 @@ def get_map_layer_data(layer_name):
         "Total Score": "data/maps/total_location_score/total_score_metro_atl.geojson",
         "Community Transportation Score": "data/maps/community_transportation_options/transportation_options_score_metro_atl.geojson",
         "Desirable/Undesirable Activities Score": "data/maps/desirable_undesirable_activities/desirable_undesirable_score_metro_atl.geojson",
-        "Quality Education Score": "data/maps/quality_education_areas/education_score_metro_atl.geojson",
+        "Quality Education Score": "data/maps/quality_education_areas/education_score_metro_atl_point_with_scores.geojson",
         "Stable Communities Score": "data/maps/stable_communities/stable_communities_score_metro_atl.geojson",
         "Past Applicant Locations": "data/maps/application_list_2022_2023_2024_metro_atl.geojson",
         "Housing Needs": "data/maps/housing_need_characteristics/housing_need_indicators_metro_atl.geojson",
@@ -626,11 +626,12 @@ with main_col2:
                                     m, gdf, "score", layer_name, simplify_tolerance=0.005
                                 )
                             elif layer_name == "Quality Education Score":
-                                layer = add_tract_score_layer(
-                                    m, gdf, "score", layer_name, simplify_tolerance=0.005
+                                layer, legend = add_lat_lon_score_layer(
+                                    gdf, layer_name, "score", YlGnBu_5, 4, max_points
                                 )
-                                if layer:
-                                    layer.add_to(m)
+                                layer.add_to(m)
+                                if legend:
+                                    legend.add_to(m)
 
                         st.session_state.map_cache[cache_key] = m
 
