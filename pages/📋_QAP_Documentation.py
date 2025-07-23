@@ -89,7 +89,7 @@ st.markdown("""
 @st.cache_data
 def load_qap_pdf():
     """Load the QAP 2024-2025 PDF file"""
-    pdf_path = Path("/Users/danielnickas/Downloads/LIHTC-Scoring-Tool/QAP2024_2025.pdf")
+    pdf_path = Path("QAP2024_2025.pdf")
     
     if pdf_path.exists():
         return pdf_path
@@ -212,7 +212,7 @@ else:
     st.error("❌ QAP 2024-2025 PDF file not found")
     st.markdown("""
     ### Expected File Location:
-    `/Users/danielnickas/Downloads/LIHTC-Scoring-Tool/QAP2024_2025.pdf`
+    `QAP2024_2025.pdf`
     
     ### Troubleshooting:
     1. **Check file exists** - Verify the PDF file is in the correct location
