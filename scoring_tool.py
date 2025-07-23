@@ -184,10 +184,174 @@ if 'last_layer_selection' not in st.session_state:
     st.session_state.last_layer_selection = []
 
 #######################################################################################################################################
+# Sidebar - Theme Selection
+#######################################################################################################################################
+
+with st.sidebar:
+    st.header("⚙️ Settings")
+    
+    # Dark mode toggle
+    dark_mode = st.toggle(
+        "🌙 Dark Mode",
+        value=st.session_state.get("dark_mode", False),
+        key="dark_mode",
+        help="Toggle between light and dark theme"
+    )
+    
+    # Apply dark mode styling
+    if dark_mode:
+        st.markdown("""
+        <style>
+        .stApp {
+            background-color: #0e1117;
+            color: #fafafa;
+        }
+        
+        .stSidebar {
+            background-color: #262730;
+        }
+        
+        .stSelectbox > div > div {
+            background-color: #262730;
+            color: #fafafa;
+        }
+        
+        .stTextInput > div > div > input {
+            background-color: #262730;
+            color: #fafafa;
+            border: 1px solid #4a4a4a;
+        }
+        
+        .stButton > button {
+            background-color: #262730;
+            color: #fafafa;
+            border: 1px solid #4a4a4a;
+        }
+        
+        .stButton > button:hover {
+            background-color: #404040;
+            border-color: #666;
+        }
+        
+        .stForm {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+        }
+        
+        .stTabs [data-baseweb="tab-list"] {
+            background-color: #262730;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            background-color: #262730;
+            color: #fafafa;
+        }
+        
+        .stTabs [aria-selected="true"] {
+            background-color: #404040;
+        }
+        
+        .stDataFrame {
+            background-color: #262730;
+        }
+        
+        .stMetric {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+        }
+        
+        /* === Text Color Inversions === */
+        /* Main text elements */
+        p, span, div, label {
+            color: #fafafa !important;
+        }
+        
+        /* Headers */
+        h1, h2, h3, h4, h5, h6 {
+            color: #fafafa !important;
+        }
+        
+        /* Markdown content */
+        .stMarkdown, .stMarkdown * {
+            color: #fafafa !important;
+        }
+        
+        /* Form labels specifically */
+        div[data-testid="stTextInput"] label,
+        div[data-testid="stSelectbox"] label,
+        div[data-testid="stCheckbox"] label,
+        div[data-testid="stSlider"] label,
+        div[data-testid="stRadio"] label {
+            color: #fafafa !important;
+        }
+        
+        /* Captions and smaller text */
+        .stCaption {
+            color: #cccccc !important;
+        }
+        
+        /* Info/warning/error boxes */
+        .stAlert > div {
+            background-color: #1a1a1a !important;
+            color: #fafafa !important;
+            border: 1px solid #404040 !important;
+        }
+        
+        /* Expander content */
+        .streamlit-expanderContent {
+            background-color: #1a1a1a !important;
+            color: #fafafa !important;
+        }
+        
+        /* Custom score display dark mode */
+        div[style*="background-color: #2B2D42"] {
+            background-color: #404040 !important;
+            color: #fafafa !important;
+        }
+        
+        /* Score breakdown text */
+        div[style*="font-size: 16px"] {
+            color: #fafafa !important;
+        }
+        
+        /* Custom HTML content */
+        div[style*="margin-bottom"] {
+            color: #fafafa !important;
+        }
+        
+        /* Map container dark mode */
+        .folium-map {
+            filter: invert(0.9) hue-rotate(180deg);
+        }
+        
+        /* Preserve map readability */
+        .leaflet-container {
+            filter: invert(0.9) hue-rotate(180deg);
+        }
+        
+        /* Fix any remaining dark text on dark background */
+        .stApp * {
+            color: #fafafa;
+        }
+        
+        /* Exception for specific elements that should remain their original colors */
+        .stProgress > div {
+            color: inherit !important;
+        }
+        
+        /* Sidebar text */
+        .stSidebar * {
+            color: #fafafa !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+#######################################################################################################################################
 # Main UI Layout
 #######################################################################################################################################
 
 st.title("LIHTC Location Scoring Tool")
+st.markdown("*Created by Emory's Center for AI*")
 main_col1, space_column, main_col2 = st.columns([4, 1, 7])
 
 #######################################################################################################################################
@@ -853,3 +1017,6 @@ with main_col2:
 
         else:
             st.info("Select a layer to display the map.")
+
+
+
