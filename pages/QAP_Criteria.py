@@ -7,7 +7,7 @@ import pandas as pd
 
 st.set_page_config(
     page_title="QAP Criteria - LIHTC Scoring Tool",
-    page_icon="📋",
+    page_icon="",
     layout="wide"
 )
 
@@ -36,15 +36,15 @@ st.markdown("""
 # Main Page Content
 #######################################################################################################################################
 
-st.title("📋 Georgia DCA LIHTC Scoring Criteria Summary")
+st.title("Georgia DCA LIHTC Scoring Criteria Summary")
 
 # Introduction using standard Streamlit info box
 st.info("""
-📖 **About the QAP Scoring Criteria**
+**About the QAP Scoring Criteria**
 
 The Georgia Department of Community Affairs (DCA) uses a comprehensive scoring system to evaluate Low-Income Housing Tax Credit (LIHTC) applications. This page provides a complete overview of all scoring categories and their maximum point values.
 
-📍 **Location-Based Criteria:** The highlighted sections below are the location-based criteria that this scoring tool calculates automatically based on latitude and longitude coordinates.
+**Location-Based Criteria:** The highlighted sections below are the location-based criteria that this scoring tool calculates automatically based on latitude and longitude coordinates.
 """)
 
 # Create the criteria data as a DataFrame
@@ -58,11 +58,11 @@ criteria_data = {
         "Readiness to Proceed",
         "Deeper Rent Targeting / PBRA",
         "HCV & PHA Notices",
-        "🎯 Desirable/Undesirable Activities",
-        "🎯 Community Transportation Options",
-        "🎯 Quality Education Areas", 
+        "TARGET: Desirable/Undesirable Activities",
+        "TARGET: Community Transportation Options",
+        "TARGET: Quality Education Areas", 
         "Revitalization / Redevelopment Plans",
-        "🎯 Stable Communities",
+        "TARGET: Stable Communities",
         "Community Designations",
         "Phased Development",
         "Previous Projects", 
@@ -107,10 +107,10 @@ criteria_data = {
 # Create DataFrame
 df = pd.DataFrame(criteria_data)
 
-st.subheader("📊 Complete Scoring Criteria")
+st.subheader("Complete Scoring Criteria")
 
 # Note about location-based criteria
-st.warning("🎯 **Location-Based Criteria** (marked with target emoji) are automatically calculated by this tool based on your coordinates.")
+st.warning("**Location-Based Criteria** are automatically calculated by this tool based on your coordinates.")
 
 # Display the table using Streamlit's native dataframe display
 st.dataframe(
@@ -134,33 +134,33 @@ st.dataframe(
 )
 
 # Key statistics using Streamlit metrics
-st.subheader("📊 Key Statistics")
+st.subheader("Key Statistics")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.metric(
-        label="🎯 Location-Based Points",
+        label="Location-Based Points",
         value="39",
         help="Maximum points available from location-based criteria calculated by this tool (20+6+3+10)"
     )
 
 with col2:
     st.metric(
-        label="📈 Total Standard Points", 
+        label="Total Standard Points", 
         value="99",
         help="Total possible points for new construction projects (excluding 62-point preservation scoring)"
     )
 
 with col3:
     st.metric(
-        label="📍 Location Impact",
+        label="Location Impact",
         value="39.4%",
         help="Percentage of total score determined by location criteria"
     )
 
 # Location criteria breakdown
-st.subheader("🎯 Location-Based Criteria Details")
+st.subheader("Location-Based Criteria Details")
 
 # Create tabs for each location criterion
 tab1, tab2, tab3, tab4 = st.tabs([
@@ -175,7 +175,7 @@ with tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.success("**➕ Desirable Activities:**")
+        st.success("**Desirable Activities:**")
         st.write("• Proximity to grocery stores")
         st.write("• Healthcare facilities")
         st.write("• Community centers")
@@ -183,7 +183,7 @@ with tab1:
         st.write("• Public libraries")
     
     with col2:
-        st.error("**➖ Undesirable Activities:**")
+        st.error("**Undesirable Activities:**")
         st.write("• Environmental hazards")
         st.write("• Industrial sites")
         st.write("• Landfills")
@@ -198,14 +198,14 @@ with tab2:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.success("**🚇 Transit-Oriented Development**")
+        st.success("**Transit-Oriented Development**")
         st.write("• Up to 6 points")
         st.write("• Proximity to major transit hubs")
         st.write("• Rail stations")
         st.write("• Bus rapid transit")
     
     with col2:
-        st.info("**🚌 Fixed-Route Transit**")
+        st.info("**Fixed-Route Transit**")
         st.write("• Up to 3 points")
         st.write("• Regular bus routes")
         st.write("• Scheduled service")
@@ -217,13 +217,13 @@ with tab3:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.success("**📊 CCRPI Scores**")
+        st.success("**CCRPI Scores**")
         st.write("• Georgia's school performance index")
         st.write("• Academic achievement metrics")
         st.write("• School improvement indicators")
     
     with col2:
-        st.info("**🎯 Beat the Odds (BTO)**")
+        st.info("**Beat the Odds (BTO)**")
         st.write("• Recognition for improving schools")
         st.write("• Overperforming expectations")
         st.write("• Must be in attendance zone")
@@ -234,56 +234,56 @@ with tab4:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.success("**📈 Positive Indicators**")
+        st.success("**Positive Indicators**")
         st.write("• Lower poverty rates")
         st.write("• Higher median income")
         st.write("• Good transit access")
         st.write("• Job opportunities nearby")
     
     with col2:
-        st.info("**🌍 Environmental Health**")
+        st.info("**Environmental Health**")
         st.write("• Air quality measures")
         st.write("• Environmental safety")
         st.write("• Health risk factors")
         st.write("• Community wellness")
 
 # Important notes in expandable sections
-with st.expander("ℹ️ Important Notes About Scoring"):
+with st.expander("Important Notes About Scoring"):
     st.markdown("""
     ### Key Points to Remember:
     
-    **📋 Application-Specific Criteria:**
+    **Application-Specific Criteria:**
     - **Preservation Scoring (62 pts):** Only applies to rehabilitation projects
     - **Community Designations (10 pts):** Only for Purpose-Built or HUD CNI applications  
     - **Housing Needs Characteristics (10 pts):** For non-Atlanta Metro areas only
     
-    **🔄 Variable Scoring:**
+    **Variable Scoring:**
     - **Compliance Performance:** Starts at 10 points, can be reduced for violations
     - **Desirable/Undesirable:** Can result in positive or negative net scores
     
-    **📚 Additional Information:**
+    **Additional Information:**
     - See the complete QAP document for detailed eligibility requirements
     - Some criteria have complex sub-scoring methodologies
     - Geographic restrictions apply to certain categories
     """)
 
-with st.expander("🎯 Scoring Strategy Tips"):
+with st.expander("Scoring Strategy Tips"):
     st.markdown("""
     ### Maximizing Location Scores:
     
-    **🏆 High-Impact Strategies:**
+    **High-Impact Strategies:**
     1. **Choose Transit-Rich Areas:** 6 points available from transportation proximity
     2. **Target Stable Communities:** 10 points from socioeconomic indicators  
     3. **Avoid Hazards:** Minimize negative impacts from undesirable activities
     4. **Research School Zones:** 3 points available from education quality
     
-    **📍 Site Selection Considerations:**
+    **Site Selection Considerations:**
     - Use this tool to compare multiple potential sites
     - Consider the full ±20 point swing from desirable/undesirable activities
     - Balance location scores with other QAP criteria
     - Review maps to understand spatial patterns
     
-    **⚖️ Trade-off Analysis:**
+    **Trade-off Analysis:**
     - Location criteria represent ~39% of total possible points
     - Strong location scores can offset weaker areas in other criteria
     - Consider development costs vs. scoring benefits
@@ -291,21 +291,21 @@ with st.expander("🎯 Scoring Strategy Tips"):
 
 # Navigation section
 st.markdown("---")
-st.subheader("🔗 Related Tools and Documentation")
+st.subheader("Related Tools and Documentation")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button("🏠 Calculate Location Scores", type="primary", use_container_width=True):
+    if st.button("Calculate Location Scores", type="primary", use_container_width=True):
         st.switch_page("scoring_tool.py")
 
 with col2:
-    if st.button("📄 View Full QAP Document", use_container_width=True):
+    if st.button("View Full QAP Document", use_container_width=True):
         st.switch_page("pages/QAP_pdf_st.py")
 
 with col3:
     st.info("""
-    **📖 Quick Reference:**
+    **Quick Reference:**
     - Location criteria = 39 max points
     - Standard total = 99 points  
     - Location impact = 39.4% of score

@@ -127,7 +127,7 @@ def create_download_link(file_path):
         <a href="data:application/pdf;base64,{b64_pdf}" 
            download="QAP2024_2025.pdf" 
            class="download-button">
-           📥 Download QAP 2024-2025
+           Download QAP 2024-2025
         </a>
         """
         return download_link
@@ -139,7 +139,7 @@ def create_download_link(file_path):
 # Main Page Content
 #######################################################################################################################################
 
-st.title("📋 Qualified Allocation Plan (QAP) 2024-2025")
+st.title("Qualified Allocation Plan (QAP) 2024-2025")
 
 # Load the QAP PDF
 qap_pdf_path = load_qap_pdf()
@@ -151,7 +151,7 @@ if qap_pdf_path:
     with col1:
         st.markdown("""
         <div class="info-box">
-            <h4>📖 About This Document</h4>
+            <h4>About This Document</h4>
             <p>The Qualified Allocation Plan (QAP) provides the framework and criteria for allocating 
             Low-Income Housing Tax Credits (LIHTC). This document contains the official scoring 
             methodologies and requirements that this tool implements.</p>
@@ -160,10 +160,10 @@ if qap_pdf_path:
         
         # Display the PDF
         if display_pdf(qap_pdf_path):
-            st.success("✅ QAP Document loaded successfully")
+            st.success("QAP Document loaded successfully")
         
     with col2:
-        st.subheader("📄 Document Details")
+        st.subheader("Document Details")
         
         # File information
         file_size = qap_pdf_path.stat().st_size / 1024 / 1024  # Size in MB
@@ -178,7 +178,7 @@ if qap_pdf_path:
         st.markdown("---")
         
         # Quick navigation
-        st.subheader("🔍 Quick Navigation")
+        st.subheader("Quick Navigation")
         st.markdown("""
         **Key Sections:**
         - Location Scoring Criteria
@@ -192,24 +192,23 @@ if qap_pdf_path:
         st.markdown("---")
         
         # Related tools
-        st.subheader("🔗 Related Tools")
-        if st.button("🏠 Back to Scoring Tool"):
+        st.subheader("Related Tools")
+        if st.button("Back to Scoring Tool"):
             st.switch_page("scoring_tool.py")
         
-        if st.button("🗺️ View Location Maps"):
-            # Add navigation to maps page if you have one
+        if st.button("View Location Maps"):
             st.info("Navigate to the main tool to access location maps")
         
         st.markdown("---")
         
         # Document status
-        st.subheader("📊 Document Status")
-        st.success("✅ Current Version")
-        st.info("📅 Valid: 2024-2025")
+        st.subheader("Document Status")
+        st.success("Current Version")
+        st.info("Valid: 2024-2025")
         
 else:
     # Error handling if PDF not found
-    st.error("❌ QAP 2024-2025 PDF file not found")
+    st.error("QAP 2024-2025 PDF file not found")
     st.markdown("""
     ### Expected File Location:
     `/Users/danielnickas/Downloads/LIHTC-Scoring-Tool/QAP2024_2025.pdf`
@@ -223,7 +222,7 @@ else:
     """)
     
     # File upload as backup
-    st.subheader("📤 Upload QAP Document")
+    st.subheader("Upload QAP Document")
     uploaded_file = st.file_uploader(
         "Upload the QAP 2024-2025 PDF file",
         type=['pdf'],
@@ -246,7 +245,7 @@ else:
             </div>
             """
             st.markdown(pdf_display, unsafe_allow_html=True)
-            st.success("✅ Uploaded QAP document displayed successfully")
+            st.success("Uploaded QAP document displayed successfully")
             
         except Exception as e:
             st.error(f"Error displaying uploaded PDF: {str(e)}")
@@ -260,12 +259,12 @@ st.markdown("""
 <div style='text-align: center; color: #666; font-size: 14px; padding: 20px;'>
     <strong>LIHTC Scoring Tool - QAP Documentation</strong><br>
     Qualified Allocation Plan 2024-2025 | 
-    <a href="/" style="color: #2B2D42; text-decoration: none;">← Back to Main Scoring Tool</a>
+    <a href="/" style="color: #2B2D42; text-decoration: none;">Back to Main Scoring Tool</a>
 </div>
 """, unsafe_allow_html=True)
 
 # Additional information section
-with st.expander("ℹ️ How to Use This Document"):
+with st.expander("How to Use This Document"):
     st.markdown("""
     ### Navigation Tips:
     - **Zoom**: Use your browser's zoom controls (Ctrl/Cmd + or -)
