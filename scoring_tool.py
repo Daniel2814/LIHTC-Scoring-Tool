@@ -188,11 +188,11 @@ if 'last_layer_selection' not in st.session_state:
 #######################################################################################################################################
 
 with st.sidebar:
-    st.header("⚙️ Settings")
+    st.header("Settings")
     
     # Dark mode toggle
     dark_mode = st.toggle(
-        "🌙 Dark Mode",
+        "Dark Mode",
         value=st.session_state.get("dark_mode", False),
         key="dark_mode",
         help="Toggle between light and dark theme"
@@ -345,6 +345,22 @@ with st.sidebar:
         }
         </style>
         """, unsafe_allow_html=True)
+    
+    # Navigation Section
+    st.markdown("---")
+    st.header("Pages")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("About LIHTC", use_container_width=True):
+            st.switch_page("pages/About.py")
+        
+        if st.button("QAP Criteria", use_container_width=True):
+            st.switch_page("pages/QAP_Criteria.py")
+    
+    with col2:
+        if st.button("Documentation", use_container_width=True):
+            st.switch_page("pages/QAP_Documentation.py")
 
 #######################################################################################################################################
 # Main UI Layout

@@ -297,11 +297,12 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     if st.button("Calculate Location Scores", type="primary", use_container_width=True):
-        st.switch_page("scoring_tool.py")
+        st.switch_page("Scoring_Tool.py")
+
 
 with col2:
     if st.button("View Full QAP Document", use_container_width=True):
-        st.switch_page("pages/QAP_pdf_st.py")
+        st.switch_page("pages/QAP_Documentation.py")
 
 with col3:
     st.info("""

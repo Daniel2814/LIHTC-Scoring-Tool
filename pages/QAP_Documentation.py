@@ -194,7 +194,7 @@ if qap_pdf_path:
         # Related tools
         st.subheader("Related Tools")
         if st.button("Back to Scoring Tool"):
-            st.switch_page("scoring_tool.py")
+            st.switch_page("Scoring_Tool.py")
         
         if st.button("View Location Maps"):
             st.info("Navigate to the main tool to access location maps")
