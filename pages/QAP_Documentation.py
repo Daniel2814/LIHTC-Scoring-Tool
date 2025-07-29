@@ -52,6 +52,13 @@ st.markdown("""
             background-color: #f9f9f9;
         }
 
+        /* === Image Display Styling === */
+        .stImage > img {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+
         /* === Download Button Styling === */
         .download-button {
             background-color: #2B2D42;
@@ -158,9 +165,16 @@ if qap_pdf_path:
         </div>
         """, unsafe_allow_html=True)
         
-        # Display the PDF
-        if display_pdf(qap_pdf_path):
-            st.success("QAP Document loaded successfully")
+        # Display the QAP image instead of PDF
+        try:
+            st.image("QAP.png", caption="QAP 2024-2025 Overview", use_container_width=True)
+            st.success("QAP Document preview loaded successfully")
+            st.info("💡 Use the download button in the sidebar to access the full PDF document")
+        except Exception as e:
+            st.error(f"Error loading QAP image: {str(e)}")
+            # Fallback to PDF display if image fails
+            if display_pdf(qap_pdf_path):
+                st.success("QAP Document loaded successfully")
         
     with col2:
         st.subheader("Document Details")
@@ -169,10 +183,12 @@ if qap_pdf_path:
         file_size = qap_pdf_path.stat().st_size / 1024 / 1024  # Size in MB
         st.metric("File Size", f"{file_size:.2f} MB")
         st.metric("Document", "QAP 2024-2025")
+        st.metric("Display Mode", "Image Preview")
         
         # Download button
         download_link = create_download_link(qap_pdf_path)
         if download_link:
+            st.markdown("**📄 Download Full Document:**")
             st.markdown(download_link, unsafe_allow_html=True)
         
         st.markdown("---")
@@ -264,6 +280,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Additional information section
+with st.expander("📖 View Full PDF Document"):
+    st.markdown("**Full QAP Document Viewer:**")
+    if display_pdf(qap_pdf_path):
+        st.success("Full QAP document loaded successfully")
+    else:
+        st.error("Could not load full PDF document")
+
 with st.expander("How to Use This Document"):
     st.markdown("""
     ### Navigation Tips:
